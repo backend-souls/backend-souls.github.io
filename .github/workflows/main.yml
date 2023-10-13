@@ -22,7 +22,7 @@ jobs:
       - name: 'build and deploy'
         uses: shalzz/zola-deploy-action@v0.17.2
         env:
-          PAGES_BRANCH: master
+          PAGES_BRANCH: gh-pages
           BUILD_DIR: .
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          REPOSITORY: username/username.github.io
+          REPOSITORY: backend-souls/backend-souls.github.io 
