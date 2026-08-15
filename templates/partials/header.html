@@ -22,6 +22,13 @@
     font-size: 1.25rem;
   }
 </style>
+{# The language switcher should land on the translation of the page/section
+   being viewed, not always the homepage — fall back to the homepage only
+   when this page has no translation in the target language (e.g. taxonomy
+   pages, or a journal entry with no .pt-br.md companion yet). #}
+{% if page %}{% set current_translations = page.translations %}
+{% elif section %}{% set current_translations = section.translations %}
+{% else %}{% set current_translations = [] %}{% endif %}
 <header class="site-header">
   <div class="header-content">
     <!-- Mobile hamburger button - far left on mobile -->
@@ -54,7 +61,10 @@
 
       {% for l in config.extra.languages_menu %}
       {% if l.code != lang %}
-      <a href="{{ get_url(path='', lang=l.code) }}" class="lang-switcher" aria-label="{{ trans(key='switch_to', lang=lang) }} {{ l.name }}" title="{{ trans(key='switch_to', lang=lang) }} {{ l.name }}">{{ l.flag }}</a>
+      {% set_global lang_href = "" %}
+      {% for t in current_translations %}{% if t.lang == l.code %}{% set_global lang_href = t.permalink %}{% endif %}{% endfor %}
+      {% if lang_href == "" %}{% set_global lang_href = get_url(path='', lang=l.code) %}{% endif %}
+      <a href="{{ lang_href }}" class="lang-switcher" aria-label="{{ trans(key='switch_to', lang=lang) }} {{ l.name }}" title="{{ trans(key='switch_to', lang=lang) }} {{ l.name }}">{{ l.flag }}</a>
       {% endif %}
       {% endfor %}
 
@@ -103,7 +113,10 @@
     {% endfor %}
     {% for l in config.extra.languages_menu %}
     {% if l.code != lang %}
-    <li><a href="{{ get_url(path='', lang=l.code) }}" class="mobile-nav-link lang-switcher">{{ l.flag }} {{ trans(key='switch_to', lang=lang) }} {{ l.name }}</a></li>
+    {% set_global lang_href = "" %}
+    {% for t in current_translations %}{% if t.lang == l.code %}{% set_global lang_href = t.permalink %}{% endif %}{% endfor %}
+    {% if lang_href == "" %}{% set_global lang_href = get_url(path='', lang=l.code) %}{% endif %}
+    <li><a href="{{ lang_href }}" class="mobile-nav-link lang-switcher">{{ l.flag }} {{ trans(key='switch_to', lang=lang) }} {{ l.name }}</a></li>
     {% endif %}
     {% endfor %}
   </ul>

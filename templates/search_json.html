@@ -1,6 +1,16 @@
-{%- set section = get_section(path="blog/_index.md", lang=lang) -%}
+{%- set blog = get_section(path="blog/_index.md", lang=lang) -%}
+{%- set journal = get_section(path="journal/_index.md", lang=lang) -%}
+{%- set journal_has_pages = journal.pages | length > 0 -%}
 [
-{%- for page in section.pages -%}
+{%- for page in blog.pages -%}
+{"title": {{ page.title | json_encode | safe }},
+ "url": {{ page.permalink | json_encode | safe }},
+ "date": {{ page.date | json_encode | safe }},
+ "excerpt": {{ page.extra.excerpt | default(value=page.description | default(value="")) | json_encode | safe }},
+ "categories": {{ page.taxonomies.categories | default(value=[]) | json_encode | safe }}}
+{%- if not loop.last or journal_has_pages %},{% endif -%}
+{%- endfor -%}
+{%- for page in journal.pages -%}
 {"title": {{ page.title | json_encode | safe }},
  "url": {{ page.permalink | json_encode | safe }},
  "date": {{ page.date | json_encode | safe }},
