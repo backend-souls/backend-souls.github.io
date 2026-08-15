@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block seo %}
+{% if section.description %}{% set seo_description = section.description %}{% else %}{% set seo_description = config.description %}{% endif %}
+{{< seo title={section.title ~ " | " ~ config.title} description={seo_description} /> }}
+{% endblock %}
+
+{% block content %}
+<div class="blog-page">
+  <header class="blog-header">
+    <h1 class="blog-title">{{ section.title }}</h1>
+    {% if section.description %}
+    <p class="blog-description">
+      {{ section.description }}
+    </p>
+    {% endif %}
+    <hr class="blog-rule" />
+  </header>
+
+  {% if paginator.pages | length > 0 %}
+  <div class="posts-list">
+    {% for page in paginator.pages %}
+    {{< post_card page={page} lang={lang} show_image={config.extra.list_images | default(value=true)} /> }}
+    {% endfor %}
+  </div>
+
+  {% if paginator.number_pagers > 1 %}
+  <nav class="pagination">
+    {% if paginator.previous %}
+    <a href="{{ paginator.previous | safe }}" class="pagination-link pagination-prev">← {{ trans(key="newer", lang=lang) }}</a>
+    {% endif %}
+    <span class="pagination-info">{{ trans(key="page_of", lang=lang) }} {{ paginator.current_index }} / {{ paginator.number_pagers }}</span>
+    {% if paginator.next %}
+    <a href="{{ paginator.next | safe }}" class="pagination-link pagination-next">{{ trans(key="older", lang=lang) }} →</a>
+    {% endif %}
+  </nav>
+  {% endif %}
+  {% else %}
+  <div class="no-posts">
+    <p>{{ trans(key="no_posts", lang=lang) }}</p>
+  </div>
+  {% endif %}
+</div>
+{% endblock content %}

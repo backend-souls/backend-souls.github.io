@@ -1,29 +1,34 @@
 # The URL the site will be built for
-base_url = "https://backendsouls.dev"
+base_url = "https://blog.backendsouls.com"
 
-compile_sass = false
-
-minify_html = true
-
-generate_feed = true
+title = "Backend Souls"
+description = "Notes on backend engineering, systems design, and the craft of building software."
 
 default_language = "en"
 
-# Whether to build a search index to be used later on by a JavaScript library
-build_search_index = true
+theme = "volks-typo"
 
-theme = "anemone"
+compile_sass = true
+minify_html = true
+
+# Theme search uses static/search.js against search_json.html, not Zola's own index.
+build_search_index = false
+
+generate_feeds = true
+feed_filenames = ["rss.xml"]
 
 taxonomies = [
-    {name = "tags", feed = true},
+    { name = "categories", feed = true, paginate_by = 10 },
+    { name = "tags", feed = true, paginate_by = 10 },
 ]
 
 [markdown]
 render_emoji = true
 external_links_target_blank = true
 smart_punctuation = true
-highlight_code = true
-highlight_theme = "gruvbox-dark"
+
+[markdown.highlighting]
+theme = "gruvbox-dark-medium"
 
 [slugify]
 paths = "on"
@@ -33,25 +38,127 @@ anchors = "on"
 [link_checker]
 internal_level = "warn"
 
+# --- Default-language (en) UI strings. Not prefixed by `languages.en` per Zola's rules. ---
+[translations]
+nav_home = "Home"
+nav_blog = "Blog"
+nav_journal = "Journal"
+nav_categories = "Categories"
+nav_about = "About"
+recent_posts = "Recent Posts"
+categories = "Categories"
+tags = "Tags"
+toc = "Table of Contents"
+min_read = "min read"
+by = "by"
+read_more = "Read More"
+back_to_blog = "Back to Blog"
+tags_label = "Tags:"
+newer = "Newer"
+older = "Older"
+page_of = "Page"
+no_posts = "No posts yet."
+search_placeholder = "Search articles…"
+search_label = "Search articles"
+close_search = "Close search"
+toggle_nav = "Toggle navigation menu"
+toggle_theme = "Toggle theme"
+toggle_sidebar = "Toggle sidebar"
+rss_feed = "RSS feed"
+rights = "All rights reserved."
+powered_by = "Powered by"
+about = "About"
+contact = "Contact"
+repo_label = "Follow"
+switch_to = "Switch to"
+article = "article"
+articles = "articles"
+no_taxonomy = "No"
+no_taxonomy_found = "found."
+with_this_tag = "with this tag"
+in_this_category = "in this category"
+back_to_tags = "Back to All Tags"
+back_to_categories = "Back to All Categories"
+
+[languages.pt-br]
+title = "Backend Souls"
+description = "Notas sobre engenharia de backend, design de sistemas e o ofício de construir software."
+generate_feeds = true
+feed_filenames = ["rss.xml"]
+build_search_index = false
+taxonomies = [
+    { name = "categories", feed = true, paginate_by = 10 },
+    { name = "tags", feed = true, paginate_by = 10 },
+]
+
+[languages.pt-br.translations]
+nav_home = "Início"
+nav_blog = "Blog"
+nav_journal = "Diário"
+nav_categories = "Categorias"
+nav_about = "Sobre"
+recent_posts = "Posts recentes"
+categories = "Categorias"
+tags = "Tags"
+toc = "Sumário"
+min_read = "min de leitura"
+by = "por"
+read_more = "Leia mais"
+back_to_blog = "Voltar ao blog"
+tags_label = "Tags:"
+newer = "Mais recentes"
+older = "Mais antigos"
+page_of = "Página"
+no_posts = "Nenhum post ainda."
+search_placeholder = "Buscar artigos…"
+search_label = "Buscar artigos"
+close_search = "Fechar busca"
+toggle_nav = "Alternar menu de navegação"
+toggle_theme = "Alternar tema"
+toggle_sidebar = "Alternar barra lateral"
+rss_feed = "Feed RSS"
+rights = "Todos os direitos reservados."
+powered_by = "Feito com"
+about = "Sobre"
+contact = "Contato"
+repo_label = "Seguir"
+switch_to = "Mudar para"
+article = "artigo"
+articles = "artigos"
+no_taxonomy = "Nenhum(a)"
+no_taxonomy_found = "encontrado(a)."
+with_this_tag = "com esta tag"
+in_this_category = "nesta categoria"
+back_to_tags = "Voltar para Todas as Tags"
+back_to_categories = "Voltar para Todas as Categorias"
+
 [extra]
-author = "Emanuel D R Sena"
-display_author = true
-favicon = "favicon.ico"
-image = ""
-default_theme = "dark"
-list_pages = false
-twitter_card = false
-toc = true
+# Nav labels come from [translations] via trans(key=item.key, lang=lang) since
+# [languages.<code>.extra] is not a field Zola supports.
+main_menu = [
+    { key = "nav_home", url = "/" },
+    { key = "nav_blog", url = "/blog" },
+    { key = "nav_journal", url = "/journal" },
+    { key = "nav_categories", url = "/categories" },
+    { key = "nav_about", url = "/about" },
+]
 
-[[extra.header_nav]]
-en = { name = "Home -- ", url = "/" }
+# Drives the header language switcher: on an `en` page, shows the `pt-br`
+# entry's flag (linking to the Portuguese version) and vice versa.
+languages_menu = [
+    { code = "en", name = "English", flag = "🇬🇧" },
+    { code = "pt-br", name = "Português", flag = "🇧🇷" },
+]
 
-[[extra.header_nav]]
-en = { name = "Journal -- ", url = "/journal" }
+# No custom favicon yet — falls back to the theme's bundled favicon.svg.
+author_name = "Emanuel D R Sena"
+author_bio = "Backend engineer writing about systems design, distributed systems, and the craft of building reliable software."
+sidebar_position = "left"
+list_images = true
+repo_url = "https://github.com/backendsouls"
+repo_icon = "github"
 
-[[extra.header_nav]]
-en = { name = "About -- ", url = "/about" }
-
-[[extra.header_nav]]
-en = { name = "[Blog]", url = "/blog" }
-
+social_links = [
+    { name = "GitHub", icon = "github", url = "https://github.com/backend-souls" },
+    { name = "Email", icon = "email", url = "mailto:dariosena@gmail.com" },
+]

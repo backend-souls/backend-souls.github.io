@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block seo %}{{< seo title={trans(key="contact", lang=lang) ~ " | " ~ config.title} description={config.description} /> }}{% endblock %}
+
+{% block content %}
+  <div class="contact-page">
+    <header class="page-header">
+      <h1 class="page-title">{{ page.title }}</h1>
+      <hr class="page-rule" />
+    </header>
+
+    <div class="contact-content">
+      <div class="contact-info">
+        {{ page.content | safe }}
+
+        {% if config.extra.social_links %}
+        <div class="contact-links">
+          {% for s in config.extra.social_links %}
+          <a href="{{ s.url }}" class="contact-link"{% if not s.url is starting_with(pat="mailto:") %} target="_blank" rel="noopener"{% endif %}>
+            <span class="contact-label">{{ s.name }}</span>
+            {{ s.url | replace(from="mailto:", to="") }}
+          </a>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

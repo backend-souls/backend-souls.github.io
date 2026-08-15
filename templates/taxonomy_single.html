@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block seo %}{{< seo title={term.name ~ " | " ~ config.title} description={"All posts in the " ~ term.name ~ " " ~ taxonomy.name} /> }}{% endblock %}
+
+{% block content %}
+{# Zola only provides `paginator` when the taxonomy sets `paginate_by`;
+otherwise fall back to the full list (term.pages). #}
+{% if paginator %}{% set_global posts = paginator.pages %}{% else %}{% set_global posts = term.pages %}{% endif %}
+<div class="category-page">
+  <header class="page-header">
+    <h1 class="page-title">{{ term.name }}</h1>
+    <p class="page-description">
+      {{ term.page_count }} {% if term.page_count != 1 %}{{ trans(key="articles", lang=lang) }}{% else %}{{ trans(key="article", lang=lang) }}{% endif %}
+      {% if taxonomy.name == "tags" %}{{ trans(key="with_this_tag", lang=lang) }}{% else %}{{ trans(key="in_this_category", lang=lang) }}{% endif %}
+    </p>
+    <hr class="page-rule" />
+  </header>
+
+  <div class="posts-list">
+    {% for page in posts %}
+    {{< post_card page={page} lang={lang} show_image={config.extra.list_images | default(value=true)} /> }}
+    {% endfor %}
+  </div>
+
+  {% if paginator and paginator.number_pagers > 1 %}
+  <nav class="pagination">
+    {% if paginator.previous %}
+    <a href="{{ paginator.previous | safe }}" class="pagination-link pagination-prev">← {{ trans(key="newer", lang=lang) }}</a>
+    {% endif %}
+    <span class="pagination-info">{{ trans(key="page_of", lang=lang) }} {{ paginator.current_index }} / {{ paginator.number_pagers }}</span>
+    {% if paginator.next %}
+    <a href="{{ paginator.next | safe }}" class="pagination-link pagination-next">{{ trans(key="older", lang=lang) }} →</a>
+    {% endif %}
+  </nav>
+  {% endif %}
+
+  <div class="page-navigation">
+    {% if taxonomy.name == "tags" %}
+    <a href="{{ get_url(path='tags', trailing_slash=true, lang=lang) }}" class="back-link">← {{ trans(key="back_to_tags", lang=lang) }}</a>
+    {% else %}
+    <a href="{{ get_url(path='categories', trailing_slash=true, lang=lang) }}" class="back-link">← {{ trans(key="back_to_categories", lang=lang) }}</a>
+    {% endif %}
+  </div>
+</div>
+{% endblock content %}

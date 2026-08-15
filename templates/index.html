@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block sidebar_class %}{% endblock %}
+{% block sidebar %}{% endblock %}
+
+{% block content %}
+<div class="landing-page">
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">{{ section.title }}</h1>
+      <div class="hero-description">
+        {{ section.content | safe }}
+      </div>
+      <hr class="hero-rule" />
+    </div>
+  </section>
+
+  <section class="demo-section">
+    <div class="container">
+      {% set blog = get_section(path="blog/_index.md", lang=lang) %}
+      {% set recent_posts = blog.pages[0:3] %}
+      {% if recent_posts | length > 0 %}
+      <h2 class="section-title">{{ trans(key="recent_posts", lang=lang) }}</h2>
+      <div class="posts-list">
+        {% for page in recent_posts %}
+        {{< post_card page={page} lang={lang} show_image={config.extra.list_images | default(value=true)} /> }}
+        {% endfor %}
+      </div>
+      <div class="demo-actions">
+        <a href="{{ get_url(path='blog', lang=lang) }}" class="btn btn-primary">{{ trans(key="nav_blog", lang=lang) }}</a>
+      </div>
+      {% endif %}
+    </div>
+  </section>
+</div>
+{% endblock content %}

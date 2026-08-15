@@ -1,7 +1,8 @@
 +++
+title = "Backend Souls"
+template = "index.html"
 +++
 
-## Overview
-
-Anemone theme is designed to provide a nearly no-JavaScript, efficient, and minimalist experience for your website. Embracing simplicity, the theme focuses on content and readability, ensuring a seamless user experience without unnecessary distractions.
-
+Backend Souls is a blog about backend engineering: systems design, distributed
+systems, databases, and the everyday craft of building software that holds up
+under real conditions.

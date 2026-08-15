@@ -1,6 +1,6 @@
 +++
 title = "Blog"
-description = "Notes on backend engineering, systems design, and the craft of building software."
+description = "Notas sobre engenharia de backend, design de sistemas e o ofício de construir software."
 sort_by = "date"
 template = "blog.html"
 page_template = "page.html"
