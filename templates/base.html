@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="{{ get_url(path=config.extra.favicon | default(value='favicon.svg')) }}" />
     <link rel="stylesheet" href="{{ get_url(path='main.css', cachebust=true) }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600&display=swap" />
     <!-- Site accent override: theme default is red; we use blue. Must come after
          main.css so the cascade picks these values (same :root / [data-theme]
          specificity, later wins). See templates/base.html in the plan notes for
@@ -12,7 +16,12 @@
          the theme's own @import chain — Zola compiles theme and site sass as two
          separate passes). -->
     <style>
-      :root { --color-accent-red: #2563eb; }
+      :root {
+        --color-accent-red: #2563eb;
+        --font-body: 'Source Code Pro', 'Work Sans', sans-serif;
+        --font-heading-primary: 'Font Awesome 6 Free', 'Oswald', sans-serif;
+        --font-heading-secondary: 'Font Awesome 6 Free', 'Roboto Condensed', sans-serif;
+      }
       [data-theme="dark"] { --color-accent: #3b82f6; }
     </style>
     <link rel="alternate" type="application/rss+xml" title="{{ config.title }}" href="{{ get_url(path='blog/rss.xml', lang=lang) }}" />
