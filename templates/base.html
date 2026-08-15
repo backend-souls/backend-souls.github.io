@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="{{ get_url(path=config.extra.favicon | default(value='favicon.svg')) }}" />
     <link rel="stylesheet" href="{{ get_url(path='main.css', cachebust=true) }}" />
+    <!-- Site accent override: theme default is red; we use blue. Must come after
+         main.css so the cascade picks these values (same :root / [data-theme]
+         specificity, later wins). See templates/base.html in the plan notes for
+         why this isn't done in Sass (site-level sass/ partials aren't visible to
+         the theme's own @import chain — Zola compiles theme and site sass as two
+         separate passes). -->
+    <style>
+      :root { --color-accent-red: #2563eb; }
+      [data-theme="dark"] { --color-accent: #3b82f6; }
+    </style>
     <link rel="alternate" type="application/rss+xml" title="{{ config.title }}" href="{{ get_url(path='blog/rss.xml', lang=lang) }}" />
     <script src="{{ get_url(path='theme-init.js', cachebust=true) }}"></script>
     {% block seo %}{{< seo title={config.title} description={config.description} /> }}{% endblock %}
