@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Backend Souls - Diário</title>
+      <link>https://blog.backendsouls.com/pt-br/journal/</link>
+      <description>Notas sobre engenharia de backend, design de sistemas e o ofício de construir software.</description>
+      <generator>Zola</generator>
+      <language>pt-br</language>
+      <atom:link href="https://blog.backendsouls.com/pt-br/journal/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Sat, 15 Aug 2026 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>Primeiro dia mexendo no site</title>
+          <pubDate>Sat, 15 Aug 2026 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.backendsouls.com/pt-br/journal/2026-08-15/</link>
+          <guid>https://blog.backendsouls.com/pt-br/journal/2026-08-15/</guid>
+          <description xml:base="https://blog.backendsouls.com/pt-br/journal/2026-08-15/">&lt;ul&gt;
+&lt;li&gt;Fiquei tempo demais brincando com fontes: decidi por Source Code Pro no corpo do texto e ícones do Font Awesome pra dar um tempero.&lt;/li&gt;
+&lt;li&gt;Finalmente coloquei uma foto de perfil; diminuí uns títulos que estavam grandes demais.&lt;/li&gt;
+&lt;li&gt;Resolvi um conflito de merge que não vi vindo, basicamente eu deveria ter prestado mais atenção.&lt;/li&gt;
+&lt;li&gt;Transformei o Diário numa seção de verdade em vez de uma página solitária, e escrevi um scriptzinho pra criar novas entradas.&lt;/li&gt;
+&lt;li&gt;Consertei as bandeiras de idioma pra não te jogarem mais de volta pra home.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Um bom primeiro dia.&lt;/p&gt;
+</description>
+      </item>
+    </channel>
+</rss>

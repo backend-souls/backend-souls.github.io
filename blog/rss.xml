@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Backend Souls - Blog</title>
+      <link>https://blog.backendsouls.com/blog/</link>
+      <description>Notes on backend engineering, systems design, and the craft of building software.</description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://blog.backendsouls.com/blog/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Sat, 15 Aug 2026 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>Hello, World</title>
+          <pubDate>Sat, 15 Aug 2026 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.backendsouls.com/blog/hello-world/</link>
+          <guid>https://blog.backendsouls.com/blog/hello-world/</guid>
+          <description xml:base="https://blog.backendsouls.com/blog/hello-world/">&lt;p&gt;This is the first post on Backend Souls. More to come on backend engineering,
+systems design, and the practical details of running software in production.&lt;/p&gt;
+</description>
+      </item>
+    </channel>
+</rss>

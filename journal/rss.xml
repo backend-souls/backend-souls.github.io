@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Backend Souls - Journal</title>
+      <link>https://blog.backendsouls.com/journal/</link>
+      <description>Notes on backend engineering, systems design, and the craft of building software.</description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://blog.backendsouls.com/journal/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Sat, 15 Aug 2026 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>First day tinkering with the site</title>
+          <pubDate>Sat, 15 Aug 2026 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.backendsouls.com/journal/2026-08-15/</link>
+          <guid>https://blog.backendsouls.com/journal/2026-08-15/</guid>
+          <description xml:base="https://blog.backendsouls.com/journal/2026-08-15/">&lt;ul&gt;
+&lt;li&gt;Messed with fonts for way too long: landed on Source Code Pro for body text, Font Awesome icons for flavor.&lt;/li&gt;
+&lt;li&gt;Added a profile pic, finally; shrunk some titles that felt too big.&lt;/li&gt;
+&lt;li&gt;Fixed a merge conflict I didn’t see coming, basically I should have pay more attention.&lt;/li&gt;
+&lt;li&gt;Turned the Journal into a real section instead of one lonely page, and wrote a little script to spin up new entries.&lt;/li&gt;
+&lt;li&gt;Fixed the language flags so they don’t dump you back on the homepage anymore.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Good first day.&lt;/p&gt;
+</description>
+      </item>
+    </channel>
+</rss>
