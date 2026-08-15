@@ -22,6 +22,19 @@
         --font-heading-primary: 'Font Awesome 6 Free', 'Oswald', sans-serif;
         --font-heading-secondary: 'Font Awesome 6 Free', 'Roboto Condensed', sans-serif;
       }
+      h1 { font-size: 2rem; }
+      h2 { font-size: 1.5rem; }
+      h3 { font-size: 1.25rem; }
+      .title-text { font-size: 1.5rem; }
+      @media (max-width: 768px) {
+        .title-text { font-size: 1.15rem; }
+      }
+      .nav-link { font-size: 0.875rem; }
+      .mobile-nav-link { font-size: 1.125rem; }
+      .hero-title { font-size: 3.5rem; }
+      @media (max-width: 768px) {
+        .hero-title { font-size: 2.5rem; }
+      }
       [data-theme="dark"] { --color-accent: #3b82f6; }
     </style>
     <link rel="alternate" type="application/rss+xml" title="{{ config.title }}" href="{{ get_url(path='blog/rss.xml', lang=lang) }}" />
