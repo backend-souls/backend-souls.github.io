@@ -151,6 +151,7 @@ languages_menu = [
 ]
 
 # No custom favicon yet — falls back to the theme's bundled favicon.svg.
+author_avatar = "/profile.jpeg"
 author_name = "Emanuel D R Sena"
 author_bio = "Backend engineer writing about systems design, distributed systems, and the craft of building reliable software."
 sidebar_position = "left"
@@ -159,6 +160,6 @@ repo_url = "https://github.com/backendsouls"
 repo_icon = "github"
 
 social_links = [
-    { name = "GitHub", icon = "github", url = "https://github.com/backend-souls" },
+    { name = "GitHub", icon = "github", url = "https://github.com/backendsouls" },
     { name = "Email", icon = "email", url = "mailto:dariosena@gmail.com" },
 ]
